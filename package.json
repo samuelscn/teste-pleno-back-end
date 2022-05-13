@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --passWithNoTests --watch",
     "teste:staged": "jest --passWithNoTests",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "prepare": "husky install"
   },
   "author": "Samuel Nascimento",
   "license": "ISC",
