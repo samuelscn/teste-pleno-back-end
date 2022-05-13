@@ -9,5 +9,5 @@ export interface AddUserAccountModel {
 }
 
 export interface AddUserAccount {
-  add (account: AddUserAccountModel): UserModel
+  add (account: AddUserAccountModel): Promise<UserModel>
 }
