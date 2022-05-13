@@ -16,13 +16,9 @@ export class CreateUserController {
       }
 
       const userAccount = await this.addUserAccount.add(httpRequest.body)
-      return {
-        statusCode: 200,
-        body: userAccount,
-      }
+      return ok(userAccount)
     } catch (error) {
       return serverError()
     }
-    // return ok(userAccount)
   }
 }
