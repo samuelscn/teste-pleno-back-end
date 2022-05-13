@@ -1,5 +1,6 @@
 import { HttpResponse, HttpRequest } from "../protocols/http"
 import { MissingParamError } from "../errors/missing-param-error"
+import { badRequest } from "../helpers/http-helper"
 
 export class CreateUserController {
   handle(httpRequest: HttpRequest): HttpResponse {
@@ -7,10 +8,7 @@ export class CreateUserController {
     
     for (const fields of requiredFields) {
       if (!httpRequest.body[fields]) {
-        return {
-          statusCode: 400,
-          body: new MissingParamError(fields)
-        }
+        return badRequest(new MissingParamError(fields))
       }
     }
   }
