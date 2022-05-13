@@ -3,7 +3,7 @@ import { MissingParamError } from "../errors/missing-param-error"
 
 export class CreateUserController {
   handle(httpRequest: HttpRequest): HttpResponse {
-    const requiredFields = ['fullName', 'email', 'addressNumber', 'address']
+    const requiredFields = ['fullName', 'email', 'addressNumber', 'address', 'phoneNumber']
     
     for (const fields of requiredFields) {
       if (!httpRequest.body[fields]) {
