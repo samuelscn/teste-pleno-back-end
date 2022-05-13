@@ -3,9 +3,15 @@ import { MissingParamError } from "../errors/missing-param-error"
 
 export class CreateUserController {
   handle(httpRequest: HttpRequest): HttpResponse {
-    return {
-      statusCode: 400,
-      body: new MissingParamError('fullName')
+    const requiredFields = ['fullName', 'email']
+    
+    for (const fields of requiredFields) {
+      if (!httpRequest.body[fields]) {
+        return {
+          statusCode: 400,
+          body: new MissingParamError(fields)
+        }
+      }
     }
   }
 }
