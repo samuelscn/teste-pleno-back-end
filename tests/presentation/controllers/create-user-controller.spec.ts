@@ -15,7 +15,7 @@ const makeAddUserAccount = () => {
       const fakeAccount = {
         id: 'valid_id',
         fullName: 'valid_fullName',
-        email: 'valid_email',
+        email: 'valid_email@mail.com',
         address: 'valid_address',
         addressNumber: 'valid_address_number',
         phoneNumber: 'valid_phone_number'
@@ -159,5 +159,30 @@ describe('AddUserController', () => {
 
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError())
+  })
+
+  test('should return 200 if valid data is provided', async () => {
+    const { sut } = makeSut()
+
+    const httpRequest = {
+      body: {
+        fullName: 'valid_fullName',
+        email: 'valid_email@mail.com',
+        address: 'valid_address',
+        addressNumber: 'valid_address_number',
+        phoneNumber: 'valid_phone_number'
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual({
+      id: 'valid_id',
+      fullName: 'valid_fullName',
+      email: 'valid_email@mail.com',
+      address: 'valid_address',
+      addressNumber: 'valid_address_number',
+      phoneNumber: 'valid_phone_number'
+    })
   })
 })
