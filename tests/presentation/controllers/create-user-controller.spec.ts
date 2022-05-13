@@ -1,4 +1,5 @@
 import { CreateUserController } from '../../../src/presentation/controllers/create-user'
+import { MissingParamError } from '../../../src/presentation/errors/missing-param-error'
 
 describe('AddUserController', () => {
   test('should return 400 if no fullName is provided', () => {
@@ -14,6 +15,6 @@ describe('AddUserController', () => {
     const httpResponse = sut.handle(httpRequest)
 
     expect(httpResponse.statusCode).toBe(400)
-    expect(httpResponse.body).toEqual(new Error('Missing params'))
+    expect(httpResponse.body).toEqual(new MissingParamError('fullName'))
   })
 })
