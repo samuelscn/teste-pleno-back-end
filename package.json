@@ -1,0 +1,11 @@
+{
+  "name": "teste-pleno-samuel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm jest"
+  },
+  "author": "Samuel Nascimento",
+  "license": "ISC"
+}
