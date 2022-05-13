@@ -1,7 +1,7 @@
 import { HttpResponse, HttpRequest } from "../protocols/http"
 import { MissingParamError } from "../errors/missing-param-error"
 import { badRequest, ok, serverError } from "../helpers/http-helper"
-import { AddUserAccount } from "../../domain/usecases/AddUserAccount"
+import { AddUserAccount } from "../../domain/usecases/add-user-account"
 export class CreateUserController {
   constructor(private readonly addUserAccount: AddUserAccount) {}
 
