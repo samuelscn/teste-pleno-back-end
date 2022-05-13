@@ -49,4 +49,20 @@ describe('AddUserController', () => {
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new MissingParamError('addressNumber'))
   })
+
+  test('should return 400 if no address is provided', () => {
+    const sut = new CreateUserController()
+    const httpRequest = {
+      body: {
+        fullName: 'any_fullName',
+        email: 'any_email',
+        addressNumber: 'any_address_number',
+        phoneNumber: 'any_phone_number'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new MissingParamError('address'))
+  })
 })
