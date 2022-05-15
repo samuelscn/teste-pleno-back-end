@@ -1,4 +1,5 @@
 export interface ConsumeUserDataModel {
+  id: string,
   fullName: string,
   email: string,
   address: string,

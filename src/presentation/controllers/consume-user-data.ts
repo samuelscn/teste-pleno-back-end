@@ -8,9 +8,11 @@ export class ConsumeUserDataController {
   async handle(): Promise<HttpResponse> {
     try {
       const userData = await this.consumeUserData.get()
+
       if (!userData || userData.length === 0) {
         return empty()
       }
+      return ok(userData)
     } catch (error) {
       return serverError()
     }
