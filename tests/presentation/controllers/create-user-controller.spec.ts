@@ -1,7 +1,7 @@
 import { CreateUserController } from '../../../src/presentation/controllers/create-user'
 import { MissingParamError } from '../../../src/presentation/errors/missing-param-error'
 import { AddUserAccount, AddUserAccountModel } from '../../../src/domain/usecases/add-user-account'
-import { UserModel } from '../../../src/domain/models/User'
+import { UserModel } from '../../../src/domain/models/user'
 import { ServerError } from '../../../src/presentation/errors/server-error'
 
 type SutTypes = {
