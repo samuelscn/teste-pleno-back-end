@@ -1,6 +1,7 @@
 import { ConsumeUserDataController } from "../../../src/presentation/controllers/consume-user-data"
 import { EmptyDataError } from "../../../src/presentation/errors/empty-data-error"
 import { ConsumeUserDataModel, ConsumeUserData } from "../../../src/domain/usecases/consume-user-data"
+import { ServerError } from '../../../src/presentation/errors/server-error'
 
 const makeConsumeUserData = () => {
   class ConsumeUserDataStub implements ConsumeUserData {
@@ -82,5 +83,17 @@ describe('ConsumeUserDataController', () => {
         phoneNumber: 'valid_phone_number'
       },
     ])
+  })
+
+  test('should return 500 if consumeUserData throws', async () => {
+    const { sut, consumeUserDataStub } = makeSut()
+    jest.spyOn(consumeUserDataStub, 'get').mockImplementationOnce(async () => {
+      return new Promise((resolve, rejects) => rejects(new Error()))
+    })
+
+    const httpResponse = await sut.handle()
+
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
   })
 })
