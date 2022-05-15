@@ -57,4 +57,30 @@ describe('ConsumeUserDataController', () => {
     expect(httpResponse.statusCode).toBe(200)
     expect(httpResponse.body).toEqual(new EmptyDataError())
   })
+
+  test('should return 200 if valid data is provided', async () => {
+    const { sut } = makeSut()
+
+    const httpResponse = await sut.handle()
+
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual([
+      {
+        id: 'valid_id',
+        fullName: 'valid_fullName',
+        email: 'valid_email@mail.com',
+        address: 'valid_address',
+        addressNumber: 'valid_address_number',
+        phoneNumber: 'valid_phone_number'
+      },
+      {
+        id: 'valid_id',
+        fullName: 'valid_fullName',
+        email: 'valid_email@mail.com',
+        address: 'valid_address',
+        addressNumber: 'valid_address_number',
+        phoneNumber: 'valid_phone_number'
+      },
+    ])
+  })
 })
