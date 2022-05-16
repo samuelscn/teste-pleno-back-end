@@ -9,7 +9,7 @@ export class ConsumeUserDataController {
     try {
       const userData = await this.consumeUserData.get()
 
-      if (!userData || userData.length === 0) {
+      if (userData?.message) {
         return empty()
       }
       return ok(userData)
