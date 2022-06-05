@@ -13,8 +13,8 @@ export class ConsumeUserAdressController implements Controller {
       const resultConsumeUserAdress = await this.consumeUserAdress.get(httpRequest.toString())
 
       return ok(resultConsumeUserAdress)
-    } catch (error) {
-      return serverError()
+    } catch (error: any) {
+      return serverError(error)
     }
   }
 }

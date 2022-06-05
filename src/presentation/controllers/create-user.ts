@@ -17,8 +17,8 @@ export class CreateUserController {
 
       const userAccount = await this.addUserAccount.add(httpRequest.body)
       return ok(userAccount)
-    } catch (error) {
-      return serverError()
+    } catch (error: any) {
+      return serverError(error)
     }
   }
 }

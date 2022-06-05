@@ -1,6 +1,6 @@
 import cron from 'node-cron'
 import { adaptRoute } from '../adapters/express-router-adapter'
-import { makeExecuteAutomationController } from '../factories/execute-automation'
+import { makeExecuteAutomationController } from '../factories/controllers/execute-automation'
 
 export class ManagerCron {
   constructor() {}

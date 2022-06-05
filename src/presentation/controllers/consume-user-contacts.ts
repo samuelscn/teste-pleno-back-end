@@ -13,8 +13,8 @@ export class ConsumeUserContactsController implements Controller {
       const resultConsumeUserContacts = await this.consumeUserContacts.get(httpRequest.toString())
 
       return ok(resultConsumeUserContacts)
-    } catch (error) {
-      return serverError()
+    } catch (error: any) {
+      return serverError(error)
     }
   }
 }
