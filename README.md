@@ -43,7 +43,10 @@ Antes de executar o script de start algumas observações devem ser feitas:
     docker-compose up
     ```
 3. Após rodar o docker-compose será necessário abrir o arquivo .env e descomentar a única linha lá disponível
-
+4. É possível testar a funcionalidade implementada manualmente (sem a utilização do cron-job) através da execução do endpoint apresentado a seguir:
+```bash
+http://localhost:5050/api/automation
+```
 
 ## ✦ Instalação
 
