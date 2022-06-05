@@ -1,0 +1,21 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: samuelscn
+      MONGO_INITDB_ROOT_PASSWORD: 2MM6ie1cUBVYvDgG
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: samuelscn
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 2MM6ie1cUBVYvDgG
+      ME_CONFIG_MONGODB_URL: mongodb://samuelscn:2MM6ie1cUBVYvDgG@teste-pleno-clean-node-api:27017/
